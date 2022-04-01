@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Reciplease1.1' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Reciplease1.1
+ 	pod 'Alamofire'
+
+  target 'Reciplease1.1Tests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'Reciplease1.1UITests' do
+    # Pods for testing
+  end
+
+end
