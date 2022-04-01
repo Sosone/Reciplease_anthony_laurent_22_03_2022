@@ -13,7 +13,6 @@ class RecipeService {
 
         private init() {}
     
-        private (set) var recipes = [Recipe]()
 
         private var recipeSession = URLSession(configuration: .default)
 
@@ -23,9 +22,11 @@ class RecipeService {
 
         private var task: URLSessionDataTask?
 
-        func getRecipe(text: String, callback: @escaping (Bool, [Recipe]?) ->Void) {
+        func getRecipe(ingredients: [String], callback: @escaping (Bool, [Recipe]?) ->Void) {
 
-            let urlString = "https://api.edamam.com/api/recipes/v2?type=public&q=\(text)&app_id=b5153b3d&app_key=a20c31a57865e7456e53a5ee7770c94a"
+            let onOneLine = ingredients.joined(separator: ";")
+            
+            let urlString = "https://api.edamam.com/api/recipes/v2?type=public&q=\(onOneLine)&app_id=b5153b3d&app_key=a20c31a57865e7456e53a5ee7770c94a"
 
 
             guard let urlStringEncoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
