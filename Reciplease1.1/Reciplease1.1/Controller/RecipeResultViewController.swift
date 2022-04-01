@@ -10,14 +10,21 @@ import UIKit
 class RecipeResultViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-
+    
+    var recipes: [Recipe]?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
+    
+    override func loadView() {
+        super.loadView()
+        tableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeCell")
+    }
 }
 
-extension RecipeResultViewController: UITableViewDataSource {
+extension RecipeResultViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -31,9 +38,9 @@ extension RecipeResultViewController: UITableViewDataSource {
            return UITableViewCell()
         }
 
-        let recipe = RecipeService.shared.recipes[indexPath.row]
+        let recipe = self.recipes?[indexPath.row]
         
-        cell.configure(image: recipe.recipeImage, name: recipe.recipeName, ingredients: recipe.ingredientLines, time: recipe.totalTime, numbers: recipe.yield)
+        cell.configure(image: recipe!.recipeImage, name: recipe!.recipeName, ingredients: recipe!.ingredientLines, time: recipe!.totalTime, numbers: recipe!.yield)
 
         return cell
     }
