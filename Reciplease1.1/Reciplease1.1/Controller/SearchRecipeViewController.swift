@@ -12,9 +12,11 @@ class SearchRecipeViewController: UIViewController,UITextFieldDelegate {
    
     @IBOutlet weak var IngredientToAdd: UITextField!
     @IBOutlet weak var newIngredient: UITableView!
-    @IBOutlet weak var AddButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     
-    var allCellsText = [String]()
+    @IBOutlet weak var searchForRecipes: UIButton!
+    private var allCellsText = [String]()
+    var recipes: [Recipe]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +38,28 @@ class SearchRecipeViewController: UIViewController,UITextFieldDelegate {
         newIngredient.reloadData()
     }
     
+    @IBAction func tapSearchButton(_ sender: Any) {
+        RecipeService.shared.getRecipe(
+            ingredients: allCellsText,
+            callback: { success, resultRecipes in
+                self.recipes = resultRecipes
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "toRecipes", sender: nil)
+                    print(self.recipes)
+                }
+            }
+        )
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dataController = segue.destination as? RecipeResultViewController {
+            dataController.recipes = self.recipes
+        }
     }
 }
     extension SearchRecipeViewController: UITableViewDelegate, UITableViewDataSource {
