@@ -10,4 +10,13 @@ import UIKit
 
 class FavoriteRecipeViewController: UIViewController {
     
+   @IBOutlet weak var favoriteTableView: UITableView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+    }
 }
+
+
+
