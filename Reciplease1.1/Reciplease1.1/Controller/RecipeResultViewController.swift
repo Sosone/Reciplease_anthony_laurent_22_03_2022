@@ -21,6 +21,7 @@ class RecipeResultViewController: UIViewController {
     override func loadView() {
         super.loadView()
         tableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeCell")
+        tableView.rowHeight = 161
     }
 }
 
@@ -30,7 +31,7 @@ extension RecipeResultViewController: UITableViewDataSource, UITableViewDelegate
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return recipes?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,9 +41,21 @@ extension RecipeResultViewController: UITableViewDataSource, UITableViewDelegate
 
         let recipe = self.recipes?[indexPath.row]
         
-        cell.configure(image: recipe!.recipeImage, name: recipe!.recipeName, ingredients: recipe!.ingredientLines, time: recipe!.totalTime, numbers: recipe!.yield)
+        cell.configure(
+            image: recipe!.recipeImage,
+            name: recipe!.recipeName,
+            ingredients: recipe!.ingredientLines.joined(separator: "\n"),
+            time: recipe!.totalTime,
+            numbers: recipe!.yield,
+            url: recipe!.urlDescription
+        )
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let recipe = self.recipes?[indexPath.row]
+        //UIApplication.shared.open(url)
     }
 }
 
