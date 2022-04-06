@@ -12,11 +12,7 @@ struct Recipe {
     let recipeName: String
     let recipeImage: String
     let yield: Double
-    let ingredientLines: String
+    let ingredientLines: [String]
     let totalTime: Double
-//    let ingredient: [ingredient]
-    
-//    struct Ingredient {
-//        let name: String
-//    }
+    let urlDescription: String
 }
