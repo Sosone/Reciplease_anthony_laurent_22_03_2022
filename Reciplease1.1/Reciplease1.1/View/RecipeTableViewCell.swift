@@ -14,8 +14,7 @@ class RecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var cookingTime: UILabel!
     @IBOutlet weak var nbrsOfPeople: UILabel!
-
-
+    var urlDetails: String = ""
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,13 +28,13 @@ class RecipeTableViewCell: UITableViewCell {
         recipeImageView.layer.shadowOpacity = 2.0
     }
     
-    func configure(image:String, name: String, ingredients: String, time: Double, numbers: Double) {
+    func configure(image:String, name: String, ingredients: String, time: Double, numbers: Double,url: String) {
         recipeImageView.image = UIImage(named: image)
         recipeLabel.text = name
         ingredientsLabel.text = ingredients
         cookingTime.text = "\(time)"
         nbrsOfPeople.text = "\(numbers)"
-        
+        urlDetails = url
     }
     
 }
