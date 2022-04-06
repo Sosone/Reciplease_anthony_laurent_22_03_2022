@@ -8,20 +8,18 @@
 import Foundation
 
 struct RecipeResponse: Codable {
+    let hits: [Hit]
     
-    let hits: [Recipe]
+    struct Hit: Codable {
+        let recipe: Recipe
+    }
 
-        struct Recipe: Codable {
-            
-            let label: String
-            let image: String
-            let totalTime: Double
-            let yield: Double
-            let ingredientsLines: String
-            let ingredients: [Ingredients]
-
-            struct Ingredients: Codable {
-                let food: String
-            }
-        }
+    struct Recipe: Codable {
+        let label: String
+        let image: String
+        let url: String
+        let yield: Double
+        let ingredientLines: [String]
+        let totalTime: Double
+    }
 }
