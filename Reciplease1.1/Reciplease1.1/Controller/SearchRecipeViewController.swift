@@ -45,7 +45,6 @@ class SearchRecipeViewController: UIViewController,UITextFieldDelegate {
                 self.recipes = resultRecipes
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "toRecipes", sender: nil)
-                    print(self.recipes)
                 }
             }
         )
