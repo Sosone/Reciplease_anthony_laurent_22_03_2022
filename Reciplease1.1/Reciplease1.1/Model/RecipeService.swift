@@ -11,7 +11,7 @@ import UIKit
 class RecipeService {
     
     static var shared = RecipeService()
-
+    
     private init() {}
 
 
@@ -57,33 +57,16 @@ class RecipeService {
             recipeResponse.hits.forEach { hit in
                 let recipe = Recipe(
                     recipeName: hit.recipe.label,
-                    recipeImage: hit.recipe.image,
+                    recipeImageURL: hit.recipe.image,
                     yield: hit.recipe.yield,
                     ingredientLines: hit.recipe.ingredientLines,
                     totalTime: hit.recipe.totalTime,
-                    urlDescription: hit.recipe.url,
-                    recipeImageData: data)
+                    urlDescription: hit.recipe.url)
         
-                    
                 recipes.append(recipe)
             }
             callback(true, recipes)
-                               
         }
-                        
         task?.resume()
     }
-    
-     func getImage(url: URL, completionHandler: @escaping ((Data?) -> Void)) {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if let data = data, error == nil {
-                    if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                        completionHandler(data)
-                    }
-                }
-            }
-            task.resume()
-        }
-    }
-
+}
