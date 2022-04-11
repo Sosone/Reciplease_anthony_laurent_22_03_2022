@@ -15,23 +15,19 @@ class DetailRecipeViewController: UIViewController {
     @IBOutlet weak var cookingTime: UILabel!
     @IBOutlet weak var nbrsOfPeople: UILabel!
     
-    var currentImage: Data?
-    var currentTime: Double?
-    var currentPeople: Double?
-    var currentIngredients: String?
-    var currentURL: String?
+    var recipe: Recipe?
     
     @IBAction func addFavorite(_ sender: Any) {
     
     }
     @IBAction func getDirections(_ sender: Any) {
-        let url = NSURL(string: currentURL ?? "http:www.google.com")
+        let url = NSURL(string: recipe?.urlDescription ?? "http:www.google.com")
         UIApplication.shared.open(url! as URL)
     }
     override func viewDidLoad() {
-        cookingTime.text = currentTime?.description
-        ingredientsList.text = currentIngredients?.description
-        nbrsOfPeople.text = currentPeople?.description
+        cookingTime.text = recipe?.totalTime.description
+        ingredientsList.text = recipe?.ingredientLines.joined(separator: "\n")
+        nbrsOfPeople.text = recipe?.yield.description
         
     }
     
