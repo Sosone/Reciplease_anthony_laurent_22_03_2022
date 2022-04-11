@@ -305,8 +305,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Rq-uf-CIT">
-                                <rect key="frame" x="123" y="751.5" width="168" height="41.5"/>
+                                <rect key="frame" x="122" y="751.5" width="170" height="41.5"/>
                                 <color key="backgroundColor" red="0.32941177490000001" green="0.60392159219999997" blue="0.47450977560000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7Rq-uf-CIT" secondAttribute="height" multiplier="168:41" id="OT7-2s-LLb"/>
+                                </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Get directions">
@@ -325,29 +328,30 @@
                                     <action selector="addFavorite:" destination="b50-yd-mR0" eventType="touchUpInside" id="QnR-sj-Bbb"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tPi-XZ-ejx">
-                                <rect key="frame" x="0.0" y="369" width="414" height="374.5"/>
-                                <color key="backgroundColor" red="0.33333334329999997" green="0.33333334329999997" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGh-U0-axQ">
+                                <rect key="frame" x="10" y="405.5" width="394" height="326"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="326" id="yaz-DK-m6h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gsq-os-AJF"/>
                         <color key="backgroundColor" red="0.33333334329999997" green="0.33333334329999997" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="Gsq-os-AJF" firstAttribute="trailing" secondItem="tPi-XZ-ejx" secondAttribute="trailing" id="0Am-jq-r7q"/>
-                            <constraint firstItem="7Rq-uf-CIT" firstAttribute="top" secondItem="tPi-XZ-ejx" secondAttribute="bottom" id="3xQ-wy-Cai"/>
+                            <constraint firstItem="Gsq-os-AJF" firstAttribute="trailing" secondItem="jGh-U0-axQ" secondAttribute="trailing" constant="10" id="1I1-tb-63O"/>
+                            <constraint firstItem="jGh-U0-axQ" firstAttribute="leading" secondItem="Gsq-os-AJF" secondAttribute="leading" constant="10" id="2oO-Ye-AQ5"/>
                             <constraint firstItem="CnR-yQ-NHK" firstAttribute="leading" secondItem="MR9-zH-WDJ" secondAttribute="leading" id="ABy-h2-dDT"/>
                             <constraint firstItem="s0M-Gy-YgK" firstAttribute="leading" secondItem="Gsq-os-AJF" secondAttribute="leading" id="FqN-Pw-Fjh"/>
                             <constraint firstItem="Gsq-os-AJF" firstAttribute="trailing" secondItem="cmb-1h-t32" secondAttribute="trailing" constant="10" id="Lo8-8b-lVJ"/>
-                            <constraint firstItem="tPi-XZ-ejx" firstAttribute="leading" secondItem="Gsq-os-AJF" secondAttribute="leading" id="UEA-we-epe"/>
                             <constraint firstItem="Gsq-os-AJF" firstAttribute="trailing" secondItem="CnR-yQ-NHK" secondAttribute="trailing" id="VSP-ru-msV"/>
                             <constraint firstItem="7Rq-uf-CIT" firstAttribute="centerX" secondItem="MR9-zH-WDJ" secondAttribute="centerX" id="WLQ-AF-Hvi"/>
                             <constraint firstItem="lO7-I2-nih" firstAttribute="top" secondItem="s0M-Gy-YgK" secondAttribute="bottom" constant="10" id="XMY-JN-wHx"/>
                             <constraint firstItem="lO7-I2-nih" firstAttribute="leading" secondItem="Gsq-os-AJF" secondAttribute="leading" constant="10" id="an2-ts-08n"/>
                             <constraint firstItem="s0M-Gy-YgK" firstAttribute="top" secondItem="CnR-yQ-NHK" secondAttribute="bottom" id="c7V-5S-iIJ"/>
-                            <constraint firstItem="tPi-XZ-ejx" firstAttribute="top" secondItem="lO7-I2-nih" secondAttribute="bottom" id="hWU-Lt-Vaa"/>
+                            <constraint firstItem="7Rq-uf-CIT" firstAttribute="top" secondItem="jGh-U0-axQ" secondAttribute="bottom" constant="20" id="h5t-Hr-W20"/>
                             <constraint firstItem="CnR-yQ-NHK" firstAttribute="top" secondItem="Gsq-os-AJF" secondAttribute="top" id="ogM-Ru-C9D"/>
                             <constraint firstItem="Gsq-os-AJF" firstAttribute="bottom" secondItem="7Rq-uf-CIT" secondAttribute="bottom" constant="20" id="rbR-Lp-ATb"/>
                             <constraint firstItem="Gsq-os-AJF" firstAttribute="trailing" secondItem="s0M-Gy-YgK" secondAttribute="trailing" id="wJB-jQ-OOg"/>
@@ -360,13 +364,13 @@
                     <connections>
                         <outlet property="cookingTime" destination="dQh-7d-QUa" id="F1B-fh-eM0"/>
                         <outlet property="imageRecipe" destination="s0M-Gy-YgK" id="qpj-EH-Qt4"/>
-                        <outlet property="ingredientsList" destination="tPi-XZ-ejx" id="qna-qx-Jbp"/>
+                        <outlet property="ingredientsList" destination="jGh-U0-axQ" id="1mQ-mu-ABI"/>
                         <outlet property="nbrsOfPeople" destination="Ykh-qX-0GO" id="qTH-4t-ukG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IbY-3x-c1Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3177" y="-220"/>
+            <point key="canvasLocation" x="3176.811594202899" y="-220.3125"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Es1-Ty-GbF">
