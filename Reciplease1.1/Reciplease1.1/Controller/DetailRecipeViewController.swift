@@ -11,7 +11,7 @@ import UIKit
 class DetailRecipeViewController: UIViewController {
     
     @IBOutlet weak var imageRecipe: UIImageView!
-    @IBOutlet weak var ingredientsList: UITextView!
+    @IBOutlet weak var ingredientsList: UILabel!
     @IBOutlet weak var cookingTime: UILabel!
     @IBOutlet weak var nbrsOfPeople: UILabel!
     
@@ -30,7 +30,7 @@ class DetailRecipeViewController: UIViewController {
     }
     override func viewDidLoad() {
         cookingTime.text = currentTime?.description
-        currentIngredients = ingredientsList.description
+        ingredientsList.text = currentIngredients?.description
         nbrsOfPeople.text = currentPeople?.description
         
     }
