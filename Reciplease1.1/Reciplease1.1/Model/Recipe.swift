@@ -6,14 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 struct Recipe {
 
     let recipeName: String
-    let recipeImage: String
+    let recipeImageURL: String
     let yield: Double
     let ingredientLines: [String]
     let totalTime: Double
     let urlDescription: String
-    let recipeImageData: Data
 }
