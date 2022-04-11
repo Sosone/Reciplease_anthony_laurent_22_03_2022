@@ -23,6 +23,12 @@ class RecipeResultViewController: UIViewController {
         tableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeCell")
         tableView.rowHeight = 161
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dataController = segue.destination as? RecipeResultViewController {
+            dataController.recipes = self.recipes
+        }
+    }
 }
 
 extension RecipeResultViewController: UITableViewDataSource, UITableViewDelegate {
@@ -54,10 +60,20 @@ extension RecipeResultViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let recipe = self.recipes?[indexPath.row]
-        //UIApplication.shared.open(url)
+        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailRecipe") as? DetailRecipeViewController {
+            let recipe = self.recipes?[indexPath.row]
+            vc.currentTime = recipe?.totalTime
+            vc.currentIngredients = recipe?.ingredientLines.joined(separator: "\n")
+            vc.currentPeople = recipe?.yield
+//            vc.currentImage =
+            vc.currentURL = recipe?.urlDescription
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
+    
+
 
 
 
