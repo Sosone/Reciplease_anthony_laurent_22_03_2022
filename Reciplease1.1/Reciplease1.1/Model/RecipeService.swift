@@ -61,7 +61,10 @@ class RecipeService {
                     yield: hit.recipe.yield,
                     ingredientLines: hit.recipe.ingredientLines,
                     totalTime: hit.recipe.totalTime,
-                    urlDescription: hit.recipe.url)
+                    urlDescription: hit.recipe.url,
+                    recipeImageData: data)
+        
+                    
                 recipes.append(recipe)
             }
             callback(true, recipes)
@@ -70,5 +73,17 @@ class RecipeService {
                         
         task?.resume()
     }
-}
+    
+     func getImage(url: URL, completionHandler: @escaping ((Data?) -> Void)) {
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: url) { (data, response, error) in
+                if let data = data, error == nil {
+                    if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                        completionHandler(data)
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
 
