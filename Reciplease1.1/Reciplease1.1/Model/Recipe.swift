@@ -15,4 +15,5 @@ struct Recipe {
     let ingredientLines: [String]
     let totalTime: Double
     let urlDescription: String
+    let recipeImageData: Data
 }
