@@ -48,13 +48,12 @@ extension RecipeResultViewController: UITableViewDataSource, UITableViewDelegate
         let recipe = self.recipes?[indexPath.row]
         
         cell.configure(
-            image: recipe!.recipeImage,
+            image: recipe!.recipeImageURL,
             name: recipe!.recipeName,
             ingredients: recipe!.ingredientLines.joined(separator: "\n"),
             time: recipe!.totalTime,
             numbers: recipe!.yield,
-            url: recipe!.urlDescription
-        )
+            url: recipe!.urlDescription)
 
         return cell
     }
@@ -63,11 +62,7 @@ extension RecipeResultViewController: UITableViewDataSource, UITableViewDelegate
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailRecipe") as? DetailRecipeViewController {
             let recipe = self.recipes?[indexPath.row]
-            vc.currentTime = recipe?.totalTime
-            vc.currentIngredients = recipe?.ingredientLines.joined(separator: "\n")
-            vc.currentPeople = recipe?.yield
-//            vc.currentImage =
-            vc.currentURL = recipe?.urlDescription
+            vc.recipe = recipe
             navigationController?.pushViewController(vc, animated: true)
         }
     }
