@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class RecipeResultViewController: UIViewController {
     
@@ -46,6 +47,7 @@ extension RecipeResultViewController: UITableViewDataSource, UITableViewDelegate
         }
 
         let recipe = self.recipes?[indexPath.row]
+        
         
         cell.configure(
             image: recipe!.recipeImageURL,
