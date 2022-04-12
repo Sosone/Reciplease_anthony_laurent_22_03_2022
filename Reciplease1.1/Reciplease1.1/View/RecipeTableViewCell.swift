@@ -26,10 +26,17 @@ class RecipeTableViewCell: UITableViewCell {
         recipeImageView.layer.shadowRadius = 2.0
         recipeImageView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
         recipeImageView.layer.shadowOpacity = 2.0
+
     }
     
-    func configure(image:String, name: String, ingredients: String, time: Double, numbers: Double,url: String) {
-        recipeImageView.image = UIImage(named: image)
+    func configure(image: String, name: String, ingredients: String, time: Double, numbers: Double,url: String) {
+        
+        if let url = URL(string: image)
+            , let data = try? Data(contentsOf: url)
+        {
+            recipeImageView.image = UIImage(data: data)
+        }
+        
         recipeLabel.text = name
         ingredientsLabel.text = ingredients
         cookingTime.text = "\(time)"
