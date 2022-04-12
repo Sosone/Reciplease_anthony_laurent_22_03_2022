@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 struct Recipe {
-
     let recipeName: String
     let recipeImageURL: String
     let yield: Double
