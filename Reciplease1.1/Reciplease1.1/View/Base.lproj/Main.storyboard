@@ -235,7 +235,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s0M-Gy-YgK">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s0M-Gy-YgK">
                                 <rect key="frame" x="0.0" y="135.5" width="414" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="iY6-kh-VkF"/>
@@ -252,7 +252,7 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ykh-qX-0GO">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -273,7 +273,7 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQh-7d-QUa">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -319,11 +319,15 @@
                                     <action selector="getDirections:" destination="b50-yd-mR0" eventType="touchUpInside" id="sUP-43-CoH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTX-LC-cXX">
-                                <rect key="frame" x="348" y="96" width="47" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTX-LC-cXX">
+                                <rect key="frame" x="364" y="93" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="IvN-rc-5ii"/>
+                                    <constraint firstAttribute="width" constant="35" id="Tuu-ZP-BeA"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="unfavorite"/>
+                                <state key="selected" image="favorite"/>
                                 <connections>
                                     <action selector="addFavorite:" destination="b50-yd-mR0" eventType="touchUpInside" id="QnR-sj-Bbb"/>
                                 </connections>
@@ -337,6 +341,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3Z-3C-0Ri">
+                                <rect key="frame" x="0.0" y="295.5" width="414" height="22"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gsq-os-AJF"/>
                         <color key="backgroundColor" red="0.33333334329999997" green="0.33333334329999997" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -345,15 +355,20 @@
                             <constraint firstItem="jGh-U0-axQ" firstAttribute="leading" secondItem="Gsq-os-AJF" secondAttribute="leading" constant="10" id="2oO-Ye-AQ5"/>
                             <constraint firstItem="CnR-yQ-NHK" firstAttribute="leading" secondItem="MR9-zH-WDJ" secondAttribute="leading" id="ABy-h2-dDT"/>
                             <constraint firstItem="s0M-Gy-YgK" firstAttribute="leading" secondItem="Gsq-os-AJF" secondAttribute="leading" id="FqN-Pw-Fjh"/>
+                            <constraint firstItem="S3Z-3C-0Ri" firstAttribute="leading" secondItem="Gsq-os-AJF" secondAttribute="leading" id="GXF-QD-yse"/>
                             <constraint firstItem="Gsq-os-AJF" firstAttribute="trailing" secondItem="cmb-1h-t32" secondAttribute="trailing" constant="10" id="Lo8-8b-lVJ"/>
+                            <constraint firstItem="Gsq-os-AJF" firstAttribute="trailing" secondItem="sTX-LC-cXX" secondAttribute="trailing" constant="15" id="TGl-jy-oJR"/>
                             <constraint firstItem="Gsq-os-AJF" firstAttribute="trailing" secondItem="CnR-yQ-NHK" secondAttribute="trailing" id="VSP-ru-msV"/>
                             <constraint firstItem="7Rq-uf-CIT" firstAttribute="centerX" secondItem="MR9-zH-WDJ" secondAttribute="centerX" id="WLQ-AF-Hvi"/>
                             <constraint firstItem="lO7-I2-nih" firstAttribute="top" secondItem="s0M-Gy-YgK" secondAttribute="bottom" constant="10" id="XMY-JN-wHx"/>
                             <constraint firstItem="lO7-I2-nih" firstAttribute="leading" secondItem="Gsq-os-AJF" secondAttribute="leading" constant="10" id="an2-ts-08n"/>
                             <constraint firstItem="s0M-Gy-YgK" firstAttribute="top" secondItem="CnR-yQ-NHK" secondAttribute="bottom" id="c7V-5S-iIJ"/>
+                            <constraint firstItem="sTX-LC-cXX" firstAttribute="top" secondItem="Gsq-os-AJF" secondAttribute="top" constant="5" id="fdR-7B-f6m"/>
                             <constraint firstItem="7Rq-uf-CIT" firstAttribute="top" secondItem="jGh-U0-axQ" secondAttribute="bottom" constant="20" id="h5t-Hr-W20"/>
+                            <constraint firstItem="S3Z-3C-0Ri" firstAttribute="top" secondItem="CnR-yQ-NHK" secondAttribute="bottom" constant="160" id="m5f-Ta-k0S"/>
                             <constraint firstItem="CnR-yQ-NHK" firstAttribute="top" secondItem="Gsq-os-AJF" secondAttribute="top" id="ogM-Ru-C9D"/>
                             <constraint firstItem="Gsq-os-AJF" firstAttribute="bottom" secondItem="7Rq-uf-CIT" secondAttribute="bottom" constant="20" id="rbR-Lp-ATb"/>
+                            <constraint firstItem="Gsq-os-AJF" firstAttribute="trailing" secondItem="S3Z-3C-0Ri" secondAttribute="trailing" id="vTR-MG-Ll5"/>
                             <constraint firstItem="Gsq-os-AJF" firstAttribute="trailing" secondItem="s0M-Gy-YgK" secondAttribute="trailing" id="wJB-jQ-OOg"/>
                             <constraint firstItem="cmb-1h-t32" firstAttribute="top" secondItem="CnR-yQ-NHK" secondAttribute="bottom" constant="10" id="xM1-kX-SQa"/>
                         </constraints>
@@ -362,9 +377,11 @@
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonFavorite" destination="sTX-LC-cXX" id="a8B-Rg-Tss"/>
                         <outlet property="cookingTime" destination="dQh-7d-QUa" id="F1B-fh-eM0"/>
                         <outlet property="imageRecipe" destination="s0M-Gy-YgK" id="qpj-EH-Qt4"/>
                         <outlet property="ingredientsList" destination="jGh-U0-axQ" id="1mQ-mu-ABI"/>
+                        <outlet property="nameRecipe" destination="S3Z-3C-0Ri" id="mB6-pg-MPW"/>
                         <outlet property="nbrsOfPeople" destination="Ykh-qX-0GO" id="qTH-4t-ukG"/>
                     </connections>
                 </viewController>
@@ -429,21 +446,6 @@
             </objects>
             <point key="canvasLocation" x="1419" y="485"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="sFi-km-0zF">
-            <objects>
-                <viewController id="qPn-kt-xpp" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="R7N-A1-g7r">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="5R4-PQ-bnt"/>
-                        <color key="backgroundColor" red="0.33333334329999997" green="0.33333334329999997" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iXk-Ag-e3Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2275" y="485"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2zh-pg-N69">
             <objects>
@@ -464,9 +466,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="favorite" width="128" height="128"/>
         <image name="people" width="2048" height="2048"/>
-        <image name="star" catalog="system" width="128" height="116"/>
         <image name="time" width="2048" height="2048"/>
+        <image name="unfavorite" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
