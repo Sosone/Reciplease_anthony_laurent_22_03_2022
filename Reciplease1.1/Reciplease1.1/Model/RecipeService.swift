@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 class RecipeService {
     
@@ -14,14 +15,16 @@ class RecipeService {
     
     private init() {}
 
-
     private var recipeSession = URLSession(configuration: .default)
 
+    
     init(recipeSession: URLSession) {
         self.recipeSession = recipeSession
     }
 
     private var task: URLSessionDataTask?
+    
+    var recipes: [Recipe] = []
 
     func getRecipe(ingredients: [String], callback: @escaping (Bool, [Recipe]?) ->Void) {
 
@@ -37,6 +40,8 @@ class RecipeService {
             callback(false, nil)
             return
         }
+        
+        // AF.request
 
         task?.cancel()
         
@@ -53,7 +58,7 @@ class RecipeService {
                 return
             }
             
-            var recipes: [Recipe] = []
+            
             recipeResponse.hits.forEach { hit in
                 let recipe = Recipe(
                     recipeName: hit.recipe.label,
@@ -63,9 +68,9 @@ class RecipeService {
                     totalTime: hit.recipe.totalTime,
                     urlDescription: hit.recipe.url)
         
-                recipes.append(recipe)
+                self.recipes.append(recipe)
             }
-            callback(true, recipes)
+            callback(true, self.recipes)
         }
         task?.resume()
     }
