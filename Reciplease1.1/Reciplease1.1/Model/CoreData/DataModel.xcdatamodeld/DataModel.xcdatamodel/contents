@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="SavedRecipe" representedClassName="SavedRecipe" syncable="YES">
-        <attribute name="image" attributeType="String"/>
-        <attribute name="ingredients" attributeType="String"/>
-        <attribute name="nbrsOfPeople" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="recipeName" attributeType="String"/>
-        <attribute name="time" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    <entity name="RecipeSaved" representedClassName="RecipeSaved" syncable="YES">
+        <attribute name="descriptionUrlSaved" optional="YES" attributeType="String"/>
+        <attribute name="imageSaved" attributeType="String"/>
+        <attribute name="ingredientsSaved" attributeType="String"/>
+        <attribute name="nameSaved" attributeType="String"/>
+        <attribute name="nbrsOfPeopleSaved" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="timeSaved" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="SavedRecipe" positionX="668.49609375" positionY="-7263.0703125" width="131.171875" height="118"/>
+        <element name="RecipeSaved" positionX="668.49609375" positionY="-7263.0703125" width="131.171875" height="133"/>
     </elements>
 </model>
