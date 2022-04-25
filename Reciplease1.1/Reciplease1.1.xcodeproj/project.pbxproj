@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5EEF5964D1AAFE9674C05B64 /* Pods_Reciplease1_1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD970675F88805594596055 /* Pods_Reciplease1_1Tests.framework */; };
-		9206F7D62805AA7E00EEA91F /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9206F7D52805AA7E00EEA91F /* Favorites.swift */; };
 		9206F7D92805B44000EEA91F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9206F7D82805B44000EEA91F /* CoreDataStack.swift */; };
-		9206F7DB2805B81800EEA91F /* SavedRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9206F7DA2805B81800EEA91F /* SavedRecipe.swift */; };
+		9206F7DB2805B81800EEA91F /* RecipeSaved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9206F7DA2805B81800EEA91F /* RecipeSaved.swift */; };
 		9206F7DF2805CF8C00EEA91F /* SavedRecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9206F7DE2805CF8C00EEA91F /* SavedRecipeService.swift */; };
 		927BAF9B27E9FEC800DD8F12 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927BAF9A27E9FEC800DD8F12 /* RecipeService.swift */; };
 		927BAF9D27E9FEF700DD8F12 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927BAF9C27E9FEF700DD8F12 /* Recipe.swift */; };
@@ -57,9 +56,8 @@
 		39A8FA641E50CED6F69015B6 /* Pods-Reciplease1.1-Reciplease1.1UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease1.1-Reciplease1.1UITests.debug.xcconfig"; path = "Target Support Files/Pods-Reciplease1.1-Reciplease1.1UITests/Pods-Reciplease1.1-Reciplease1.1UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3FD970675F88805594596055 /* Pods_Reciplease1_1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease1_1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AE2B5F954242C2F5570D0C9 /* Pods_Reciplease1_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease1_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9206F7D52805AA7E00EEA91F /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		9206F7D82805B44000EEA91F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		9206F7DA2805B81800EEA91F /* SavedRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipe.swift; sourceTree = "<group>"; };
+		9206F7DA2805B81800EEA91F /* RecipeSaved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSaved.swift; sourceTree = "<group>"; };
 		9206F7DE2805CF8C00EEA91F /* SavedRecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipeService.swift; sourceTree = "<group>"; };
 		927BAF9A27E9FEC800DD8F12 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
 		927BAF9C27E9FEF700DD8F12 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -185,10 +183,9 @@
 				927BAF9A27E9FEC800DD8F12 /* RecipeService.swift */,
 				927BAF9C27E9FEF700DD8F12 /* Recipe.swift */,
 				927BAF9E27E9FF5700DD8F12 /* RecipeResponse.swift */,
-				9206F7D52805AA7E00EEA91F /* Favorites.swift */,
-				9206F7DA2805B81800EEA91F /* SavedRecipe.swift */,
-				9206F7D72805B3D300EEA91F /* CoreData */,
+				9206F7DA2805B81800EEA91F /* RecipeSaved.swift */,
 				9206F7DE2805CF8C00EEA91F /* SavedRecipeService.swift */,
+				9206F7D72805B3D300EEA91F /* CoreData */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -495,14 +492,13 @@
 				927BAFA327EA096F00DD8F12 /* FavoriteRecipeViewController.swift in Sources */,
 				927BAFA927EA104000DD8F12 /* DataModel.xcdatamodeld in Sources */,
 				929060DF27E4EB2D0090323A /* IngredientTableViewCell.swift in Sources */,
-				9206F7DB2805B81800EEA91F /* SavedRecipe.swift in Sources */,
+				9206F7DB2805B81800EEA91F /* RecipeSaved.swift in Sources */,
 				927BAFA127E9FF9A00DD8F12 /* RecipeTableViewCell.swift in Sources */,
 				9206F7DF2805CF8C00EEA91F /* SavedRecipeService.swift in Sources */,
 				927DF7E127E0E69700737594 /* RecipeResultViewController.swift in Sources */,
 				927BAF9F27E9FF5700DD8F12 /* RecipeResponse.swift in Sources */,
 				927BAF9B27E9FEC800DD8F12 /* RecipeService.swift in Sources */,
 				927DF7DD27E0E69700737594 /* AppDelegate.swift in Sources */,
-				9206F7D62805AA7E00EEA91F /* Favorites.swift in Sources */,
 				927DF7DF27E0E69700737594 /* SceneDelegate.swift in Sources */,
 				927BAF9D27E9FEF700DD8F12 /* Recipe.swift in Sources */,
 			);
