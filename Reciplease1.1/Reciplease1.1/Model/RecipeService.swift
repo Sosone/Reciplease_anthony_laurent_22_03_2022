@@ -22,10 +22,6 @@ class RecipeService {
         self.recipeSession = recipeSession
     }
 
-    private var task: URLSessionDataTask?
-    
-    var recipes: [Recipe] = []
-
     func getRecipe(ingredients: [String], callback: @escaping (Bool, [Recipe]?) ->Void) {
 
         let onOneLine = ingredients.joined(separator: ";")
@@ -41,37 +37,26 @@ class RecipeService {
             return
         }
         
-        // AF.request
-
-        task?.cancel()
-        
-        task = recipeSession.dataTask(with: recipeUrl) { (data, response, error) in
-            guard let data = data
-                    , error == nil
-                    , let response = response as? HTTPURLResponse
-                    , response.statusCode == 200
-                    , let recipeResponse = try? JSONDecoder().decode(RecipeResponse.self, from: data)
-                    
-            else {
-                //print(String(data: data!, encoding: .utf8))
-                callback(false, nil)
-                return
-            }
+        AF.request(recipeUrl).responseDecodable(of: RecipeResponse.self) { response in
             
-            
-            recipeResponse.hits.forEach { hit in
-                let recipe = Recipe(
-                    recipeName: hit.recipe.label,
-                    recipeImageURL: hit.recipe.image,
-                    yield: hit.recipe.yield,
-                    ingredientLines: hit.recipe.ingredientLines,
-                    totalTime: hit.recipe.totalTime,
-                    urlDescription: hit.recipe.url)
-        
-                self.recipes.append(recipe)
+            switch response.result {
+                case .success(let recipeResponse):
+                    var recipes: [Recipe] = []
+                    recipeResponse.hits.forEach { hit in
+                        let recipe = Recipe(
+                            recipeName: hit.recipe.label,
+                            recipeImageURL: hit.recipe.image,
+                            yield: hit.recipe.yield,
+                            ingredientLines: hit.recipe.ingredientLines,
+                            totalTime: hit.recipe.totalTime,
+                            urlDescription: hit.recipe.url)
+                        
+                        recipes.append(recipe)
+                    }
+                    callback(true, recipes)
+                case .failure(let error):
+                    callback(false, nil)
             }
-            callback(true, self.recipes)
         }
-        task?.resume()
     }
 }
