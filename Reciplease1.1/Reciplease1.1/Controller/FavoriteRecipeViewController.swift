@@ -14,15 +14,17 @@ class FavoriteRecipeViewController: UIViewController {
    @IBOutlet weak var favoriteTableView: UITableView!
     
     var recipes: [Recipe]?
+    let request: NSFetchRequest<RecipeSaved>? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        guard let recipes = try? CoreDataStack.sharedInstance.viewContext.fetch(request!) else {
+           return
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
     }
 }
 
