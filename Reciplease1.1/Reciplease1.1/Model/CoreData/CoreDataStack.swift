@@ -11,21 +11,21 @@ import CoreData
 final class CoreDataStack {
     
     // MARK: - Properties
-    
+
     private let persistentContainerName = "DataModel"
-    
+
     // MARK: - Singleton
 
    static let sharedInstance = CoreDataStack()
-    
+
     // MARK: - Public
-    
+
     var viewContext: NSManagedObjectContext {
         return CoreDataStack.sharedInstance.viewContext
     }
-    
+
     // MARK: - Private
-    
+
     private init() {}
 
     private lazy var persistentContainer: NSPersistentContainer = {
