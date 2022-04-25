@@ -16,3 +16,4 @@ struct Recipe {
     let totalTime: Double
     let urlDescription: String
 }
+
