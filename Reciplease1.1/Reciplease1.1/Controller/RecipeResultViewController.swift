@@ -22,7 +22,7 @@ class RecipeResultViewController: UIViewController {
     override func loadView() {
         super.loadView()
         tableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeCell")
-        tableView.rowHeight = 161
+        tableView.rowHeight = 200
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
