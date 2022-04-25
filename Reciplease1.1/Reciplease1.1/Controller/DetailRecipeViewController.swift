@@ -20,14 +20,29 @@ class DetailRecipeViewController: UIViewController {
     
     var recipe: Recipe?
     
+    override func viewDidLoad() {
+        cookingTime.text = recipe?.totalTime.description
+        ingredientsList.text = recipe?.ingredientLines.joined(separator: "\n")
+        nbrsOfPeople.text = recipe?.yield.description
+        nameRecipe.text = recipe?.recipeName.description
+        if let url = URL(string: recipe!.recipeImageURL)
+        ,let data = try? Data(contentsOf: url)
+        {
+            imageRecipe.image = UIImage(data: data)
+        }
+        
+    }
+    
     @objc func onclickAddFavorite(sender:UIButton) {
+        guard let recipe = recipe else { return }
         if sender.isSelected == true {
             sender.isSelected = false
             print("not Selected")
+            
         }else {
             sender.isSelected = true
             print("Selected")
-
+            SavedRecipeService.shared.save(recipe: recipe)
         }
     }
     
@@ -43,20 +58,6 @@ class DetailRecipeViewController: UIViewController {
         let url = NSURL(string: recipe!.urlDescription)
         UIApplication.shared.open(url! as URL)
     }
-    
-    override func viewDidLoad() {
-        cookingTime.text = recipe?.totalTime.description
-        ingredientsList.text = recipe?.ingredientLines.joined(separator: "\n")
-        nbrsOfPeople.text = recipe?.yield.description
-        nameRecipe.text = recipe?.recipeName.description
-        if let url = URL(string: recipe!.recipeImageURL)
-        ,let data = try? Data(contentsOf: url)
-        {
-            imageRecipe.image = UIImage(data: data)
-        }
-    }
-    
-    
-    
+ 
 }
 
