@@ -25,12 +25,10 @@ class DetailRecipeViewController: UIViewController {
         ingredientsList.text = recipe?.ingredientLines.joined(separator: "\n")
         nbrsOfPeople.text = recipe?.yield.description
         nameRecipe.text = recipe?.recipeName.description
-        if let url = URL(string: recipe!.recipeImageURL)
-        ,let data = try? Data(contentsOf: url)
+        if let recipe = recipe
         {
-            imageRecipe.image = UIImage(data: data)
+            imageRecipe.image = UIImage(data: recipe.recipeImage)
         }
-        
     }
     
     @objc func onclickAddFavorite(sender:UIButton) {
@@ -38,11 +36,13 @@ class DetailRecipeViewController: UIViewController {
         if sender.isSelected == true {
             sender.isSelected = false
             print("not Selected")
+            RecipeRepository.shared.delete(recipe: recipe)
             
         }else {
             sender.isSelected = true
             print("Selected")
-            SavedRecipeService.shared.save(recipe: recipe)
+            RecipeRepository.shared.save(recipe: recipe)
+            
         }
     }
     
@@ -58,6 +58,4 @@ class DetailRecipeViewController: UIViewController {
         let url = NSURL(string: recipe!.urlDescription)
         UIApplication.shared.open(url! as URL)
     }
- 
 }
-
