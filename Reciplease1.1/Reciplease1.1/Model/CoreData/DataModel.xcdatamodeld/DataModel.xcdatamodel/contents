@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="RecipeSaved" representedClassName="RecipeSaved" syncable="YES">
+    <entity name="RecipeSaved" representedClassName="RecipeSaved" syncable="YES" codeGenerationType="category">
         <attribute name="descriptionUrlSaved" optional="YES" attributeType="String"/>
-        <attribute name="imageSaved" attributeType="String"/>
+        <attribute name="imageSaved" optional="YES" attributeType="Binary"/>
         <attribute name="ingredientsSaved" attributeType="String"/>
         <attribute name="nameSaved" attributeType="String"/>
         <attribute name="nbrsOfPeopleSaved" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="timeSaved" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="RecipeSaved" positionX="668.49609375" positionY="-7263.0703125" width="131.171875" height="133"/>
+        <element name="RecipeSaved" positionX="668.49609375" positionY="-7263.0703125" width="131.171875" height="119"/>
     </elements>
 </model>
