@@ -43,15 +43,19 @@ class RecipeService {
                 case .success(let recipeResponse):
                     var recipes: [Recipe] = []
                     recipeResponse.hits.forEach { hit in
-                        let recipe = Recipe(
-                            recipeName: hit.recipe.label,
-                            recipeImageURL: hit.recipe.image,
-                            yield: hit.recipe.yield,
-                            ingredientLines: hit.recipe.ingredientLines,
-                            totalTime: hit.recipe.totalTime,
-                            urlDescription: hit.recipe.url)
-                        
-                        recipes.append(recipe)
+                        if let url = URL(string: hit.recipe.image)
+                            , let data = try? Data(contentsOf: url)
+                        {
+                            let recipe = Recipe(
+                                recipeName: hit.recipe.label,
+                                recipeImage: data,
+                                yield: hit.recipe.yield,
+                                ingredientLines: hit.recipe.ingredientLines,
+                                totalTime: hit.recipe.totalTime,
+                                urlDescription: hit.recipe.url)
+                            
+                            recipes.append(recipe)
+                        }
                     }
                     callback(true, recipes)
                 case .failure(let error):
