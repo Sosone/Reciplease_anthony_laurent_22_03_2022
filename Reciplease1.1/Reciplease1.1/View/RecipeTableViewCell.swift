@@ -29,14 +29,9 @@ class RecipeTableViewCell: UITableViewCell {
 
     }
     
-    func configure(image: String, name: String, ingredients: String, time: Double, numbers: Double,url: String) {
+    func configure(image: Data, name: String, ingredients: String, time: Double, numbers: Double,url: String) {
         
-        if let url = URL(string: image)
-            , let data = try? Data(contentsOf: url)
-        {
-            recipeImageView.image = UIImage(data: data)
-        }
-        
+        recipeImageView.image = UIImage(data: image)
         recipeLabel.text = name
         ingredientsLabel.text = ingredients
         cookingTime.text = "\(time)"
