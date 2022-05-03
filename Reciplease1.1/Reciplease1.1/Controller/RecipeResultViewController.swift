@@ -50,7 +50,7 @@ extension RecipeResultViewController: UITableViewDataSource, UITableViewDelegate
         
         
         cell.configure(
-            image: recipe!.recipeImageURL,
+            image: recipe!.recipeImage,
             name: recipe!.recipeName,
             ingredients: recipe!.ingredientLines.joined(separator: "\n"),
             time: recipe!.totalTime,
