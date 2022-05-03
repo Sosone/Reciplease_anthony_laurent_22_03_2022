@@ -39,6 +39,13 @@ class SearchRecipeViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func tapSearchButton(_ sender: Any) {
+        if allCellsText == [] {
+            let alertController = UIAlertController(title: "Oups", message: "Vous n'avez pas renseigné d'ingrédient", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(alertAction)
+            present(alertController, animated: true, completion: nil)
+            return
+        }
         RecipeService.shared.getRecipe(
             ingredients: allCellsText,
             callback: { success, resultRecipes in
