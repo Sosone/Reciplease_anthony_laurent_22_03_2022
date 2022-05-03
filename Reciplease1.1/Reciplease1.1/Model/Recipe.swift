@@ -10,7 +10,7 @@ import UIKit
 
 struct Recipe {
     let recipeName: String
-    let recipeImageURL: String
+    let recipeImage: Data
     let yield: Double
     let ingredientLines: [String]
     let totalTime: Double
