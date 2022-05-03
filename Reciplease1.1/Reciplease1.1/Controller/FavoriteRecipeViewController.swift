@@ -14,17 +14,31 @@ class FavoriteRecipeViewController: UIViewController {
    @IBOutlet weak var favoriteTableView: UITableView!
     
     var recipes: [Recipe]?
-    let request: NSFetchRequest<RecipeSaved>? = nil
+
+    private let repository = RecipeRepository()
+    
+    override func loadView() {
+        super.loadView()
+        favoriteTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeCell")
+        favoriteTableView.rowHeight = 200
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let recipes = try? CoreDataStack.sharedInstance.viewContext.fetch(request!) else {
-           return
-        }
+        favoriteTableView.dataSource = self
+        favoriteTableView.delegate = self
+        self.recipes = RecipeRepository.shared.retrieve()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        favoriteTableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dataController = segue.destination as? FavoriteRecipeViewController {
+            dataController.recipes = self.recipes
+        }
     }
 }
 
@@ -46,18 +60,16 @@ extension FavoriteRecipeViewController: UITableViewDataSource, UITableViewDelega
         
         
         cell.configure(
-            image: recipe!.recipeImageURL,
-            name: recipe!.recipeName,
-            ingredients: recipe!.ingredientLines.joined(separator: "\n"),
-            time: recipe!.totalTime,
-            numbers: recipe!.yield,
-            url: recipe!.urlDescription)
-
+            image: recipe!.recipeImage,
+                       name: recipe!.recipeName,
+                       ingredients: recipe!.ingredientLines.joined(separator: "\n"),
+                       time: recipe!.totalTime,
+                       numbers: recipe!.yield,
+                       url: recipe!.urlDescription)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailRecipe") as? DetailRecipeViewController {
             let recipe = self.recipes?[indexPath.row]
             vc.recipe = recipe
