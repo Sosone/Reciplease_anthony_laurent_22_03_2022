@@ -15,6 +15,7 @@ class RecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var cookingTime: UILabel!
     @IBOutlet weak var nbrsOfPeople: UILabel!
     var urlDetails: String = ""
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -37,6 +38,7 @@ class RecipeTableViewCell: UITableViewCell {
         cookingTime.text = "\(time)"
         nbrsOfPeople.text = "\(numbers)"
         urlDetails = url
+        
     }
     
 }
