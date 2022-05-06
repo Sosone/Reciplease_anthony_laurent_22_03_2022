@@ -17,38 +17,7 @@ final class RecipeRepository {
 
     // MARK: - Repository
 
-    func recipeIsAlreadyInFavorite() {
-        
-    }
-    
    
-    
-//    func remove() {
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
-//        else { return }
-//        let persistentContainer: NSPersistentContainer
-//        let object = NSManagedObject
-//        let context = appDelegate.persistentContainer.viewContext
-//
-//        try? context.delete(object)
-//
-//        try? context.save()
-        
-//        let fetchRequest: NSFetchRequest<RecipeSaved>
-//        fetchRequest = RecipeSaved.fetchRequest()
-//
-//        fetchRequest.predicate =
-//        fetchRequest.includesPropertyValues = false
-//
-//        let context = persistentContainer.viewContext
-//
-//        let objects = try context.fetch(fetchRequest)
-//
-//        for object in objects {
-//            context.delete(object)
-//        }
-//        try context.save()
-//    }
     
     func save(recipe: Recipe) -> Void {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -60,9 +29,7 @@ final class RecipeRepository {
 
         let savedRecipe = NSManagedObject(entity: entity, insertInto: context)
         
-//        let image = UIImage()
-//        
-//        savedRecipe.setValue(image.pngData, forKey: "imageSaved")
+
         savedRecipe.setValue(recipe.recipeImage, forKey: "imageSaved")
         savedRecipe.setValue(recipe.ingredientLines.joined(separator: ";"), forKey: "ingredientsSaved")
         savedRecipe.setValue(recipe.recipeName, forKey: "nameSaved")
@@ -116,4 +83,42 @@ final class RecipeRepository {
             return recipes
         }
     }
+    
+    func remove(recipe: RecipeSaved) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else { return }
+
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "RecipeSaved", in: context)!
+        let savedRecipe = NSManagedObject(entity: entity, insertInto: context)
+        let fetchRequest: NSFetchRequest<RecipeSaved> = RecipeSaved.fetchRequest()
+        let namePredicate = NSPredicate(format: "nameSaved == %@", recipe.nameSaved as! CVarArg)
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [namePredicate])
+        do {
+            let objects: [NSManagedObject] = try context.fetch(fetchRequest) as [NSManagedObject]
+            objects.forEach { object in
+
+
+            }
+            try context.delete(savedRecipe)
+            print("La recette est supprimée")
+            try context.save()
+
+        }
+        catch let error as NSError {
+            print("Il y a une erreur lors de la suppression: \(error)")
+        }
+    }
+    
+   
+                
+        func checkIfRecipeIsAlreadySaved(name: String) -> Bool {
+            let request: NSFetchRequest<RecipeSaved> = RecipeSaved.fetchRequest()
+            request.predicate = NSPredicate(format: "nameSaved == %@", name)
+            guard let recipes = try? CoreDataStack.sharedInstance.viewContext.fetch(request) else { return false}
+            if recipes.isEmpty { return false }
+            return true
+        }
+    
+
 }
