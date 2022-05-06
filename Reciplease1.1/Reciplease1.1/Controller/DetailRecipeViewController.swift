@@ -19,8 +19,10 @@ class DetailRecipeViewController: UIViewController {
     @IBOutlet weak var buttonFavorite: UIButton!
     
     var recipe: Recipe?
+    var favRecipe: RecipeSaved?
     
     override func viewDidLoad() {
+       
         cookingTime.text = recipe?.totalTime.description
         ingredientsList.text = recipe?.ingredientLines.joined(separator: "\n")
         nbrsOfPeople.text = recipe?.yield.description
@@ -29,6 +31,7 @@ class DetailRecipeViewController: UIViewController {
         {
             imageRecipe.image = UIImage(data: recipe.recipeImage)
         }
+
     }
     
     @objc func onclickAddFavorite(sender:UIButton) {
@@ -36,8 +39,8 @@ class DetailRecipeViewController: UIViewController {
         if sender.isSelected == true {
             sender.isSelected = false
             print("not Selected")
-            RecipeRepository.shared.delete(recipe: recipe)
-            
+            RecipeRepository.shared.remove(recipe: favRecipe)
+           
         }else {
             sender.isSelected = true
             print("Selected")
@@ -58,4 +61,5 @@ class DetailRecipeViewController: UIViewController {
         let url = NSURL(string: recipe!.urlDescription)
         UIApplication.shared.open(url! as URL)
     }
+    
 }
