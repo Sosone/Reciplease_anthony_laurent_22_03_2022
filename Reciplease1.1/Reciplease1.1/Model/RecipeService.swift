@@ -13,13 +13,16 @@ class RecipeService {
     
     static var shared = RecipeService()
     
-    private init() {}
-
-    private var recipeSession = URLSession(configuration: .default)
-
+    private var session: Alamofire.Session
     
-    init(recipeSession: URLSession) {
-        self.recipeSession = recipeSession
+    private init() {
+        // HTTP
+        self.session = Alamofire.Session(configuration: .default)
+    }
+
+    init(session: Alamofire.Session) {
+        // Injecté
+        self.session = session
     }
 
     func getRecipe(ingredients: [String], callback: @escaping (Bool, [Recipe]?) ->Void) {
@@ -37,8 +40,7 @@ class RecipeService {
             return
         }
         
-        AF.request(recipeUrl).responseDecodable(of: RecipeResponse.self) { response in
-            
+        self.session.request(recipeUrl).responseDecodable(of: RecipeResponse.self) { response in
             switch response.result {
                 case .success(let recipeResponse):
                     var recipes: [Recipe] = []
