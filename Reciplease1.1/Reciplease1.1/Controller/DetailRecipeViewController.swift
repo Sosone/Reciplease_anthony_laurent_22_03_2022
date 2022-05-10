@@ -40,9 +40,7 @@ class DetailRecipeViewController: UIViewController {
         if sender.isSelected == true {
             sender.isSelected = false
             print("not Selected")
-//            RecipeRepository.shared.remove(nameSaved: recipe.recipeName.description)
-//            RecipeRepository.shared.remove2()
-//            RecipeRepository.shared.delete(recipe: recipe)
+            RecipeRepository.shared.remove(nameSaved: recipe.recipeName.description)
            
         }else {
             sender.isSelected = true
@@ -69,7 +67,6 @@ class DetailRecipeViewController: UIViewController {
     func alreadyInFavorite() {
         let fav = RecipeRepository.shared.checkIfRecipeIsAlreadySaved(name: (recipe?.recipeName.description)!)
         if fav == true {
-            print(recipe?.recipeName.description)
             buttonFavorite.isSelected = true
         }
         
