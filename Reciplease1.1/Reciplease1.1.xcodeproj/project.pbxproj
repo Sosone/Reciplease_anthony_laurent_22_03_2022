@@ -31,6 +31,7 @@
 		92879B8228200B5E006233BA /* FakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92879B8128200B5E006233BA /* FakeResponse.swift */; };
 		929060DD27E4E8DF0090323A /* SearchRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929060DC27E4E8DF0090323A /* SearchRecipeViewController.swift */; };
 		929060DF27E4EB2D0090323A /* IngredientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929060DE27E4EB2D0090323A /* IngredientTableViewCell.swift */; };
+		9297572E282ABB7F00B98FB2 /* Recipe.json in Resources */ = {isa = PBXBuildFile; fileRef = 927D443F28173FB900D8DC03 /* Recipe.json */; };
 		9297EE7E282157330057CF51 /* TestAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9297EE7D282157330057CF51 /* TestAlamofire.swift */; };
 		9297EE80282161EE0057CF51 /* TestCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9297EE7F282161ED0057CF51 /* TestCoreData.swift */; };
 		AE61A797AC5CD49E7D2C6D33 /* Pods_Reciplease1_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE2B5F954242C2F5570D0C9 /* Pods_Reciplease1_1.framework */; };
@@ -393,6 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9297572E282ABB7F00B98FB2 /* Recipe.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
