@@ -12,6 +12,7 @@ import CoreData
 class FavoriteRecipeViewController: UIViewController {
     
    @IBOutlet weak var favoriteTableView: UITableView!
+    @IBOutlet weak var noFavorite: UILabel!
     
     var recipes: [Recipe]?
 
@@ -27,13 +28,15 @@ class FavoriteRecipeViewController: UIViewController {
         super.viewDidLoad()
         favoriteTableView.dataSource = self
         favoriteTableView.delegate = self
-        self.recipes = RecipeRepository.shared.retrieve()
-        favoriteTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.recipes = RecipeRepository.shared.retrieve()
         favoriteTableView.reloadData()
+        if recipes!.count != 0 {
+            noFavorite.isHidden = true
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
