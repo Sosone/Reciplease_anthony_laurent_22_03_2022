@@ -11,7 +11,7 @@ class FakeResponseData {
     static var recipeCorrectData : Data? {
         let bundle = Bundle(for: FakeResponseData.self)
         guard let url = bundle.url(forResource: "Recipe", withExtension: "json") else { return nil }
-        return try! Data(contentsOf: url)
+        return try? Data(contentsOf: url)
     }
     
     static let recipeIncorrectData = "erreur".data(using: .utf8)!
