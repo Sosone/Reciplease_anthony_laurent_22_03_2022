@@ -130,7 +130,7 @@ final class RecipeRepository {
         func checkIfRecipeIsAlreadySaved(name: String) -> Bool {
             let request: NSFetchRequest<RecipeSaved> = RecipeSaved.fetchRequest()
             request.predicate = NSPredicate(format: "nameSaved == %@", name)
-            guard let recipes = try? CoreDataStack.sharedInstance.viewContext.fetch(request) else { return false}
+            guard let recipes = try? coreDataStack.viewContext.fetch(request) else { return false}
             if recipes.isEmpty { return false }
             return true
         }
