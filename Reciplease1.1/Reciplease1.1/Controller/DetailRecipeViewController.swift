@@ -31,6 +31,7 @@ class DetailRecipeViewController: UIViewController {
         {
             imageRecipe.image = UIImage(data: recipe.recipeImage)
         }
+        alreadyInFavorite()
 
     }
     
@@ -39,12 +40,15 @@ class DetailRecipeViewController: UIViewController {
         if sender.isSelected == true {
             sender.isSelected = false
             print("not Selected")
-            RecipeRepository.shared.remove(recipe: favRecipe)
+//            RecipeRepository.shared.remove(nameSaved: recipe.recipeName.description)
+//            RecipeRepository.shared.remove2()
+//            RecipeRepository.shared.delete(recipe: recipe)
            
         }else {
             sender.isSelected = true
             print("Selected")
             RecipeRepository.shared.save(recipe: recipe)
+            
             
         }
     }
@@ -54,12 +58,21 @@ class DetailRecipeViewController: UIViewController {
         buttonFavorite.setImage(UIImage.init(named: "unfavorite"), for: UIControl.State.normal)//When selected
         buttonFavorite.setImage(UIImage.init(named: "favorite"), for: UIControl.State.highlighted)//When highlighted
         buttonFavorite.setImage(UIImage.init(named: "favorite"), for: UIControl.State.selected)//When selected
-        
+
     }
     
     @IBAction func getDirections(_ sender: Any) {
         let url = NSURL(string: recipe!.urlDescription)
         UIApplication.shared.open(url! as URL)
+    }
+    
+    func alreadyInFavorite() {
+        let fav = RecipeRepository.shared.checkIfRecipeIsAlreadySaved(name: (recipe?.recipeName.description)!)
+        if fav == true {
+            print(recipe?.recipeName.description)
+            buttonFavorite.isSelected = true
+        }
+        
     }
     
 }
