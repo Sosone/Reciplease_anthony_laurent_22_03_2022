@@ -14,15 +14,20 @@ class RecipeService {
     static var shared = RecipeService()
     
     private var session: Alamofire.Session
+    private var imageLoader: (URL) -> Data?
     
     private init() {
         // HTTP
         self.session = Alamofire.Session(configuration: .default)
+        self.imageLoader = { url in
+            return try? Data(contentsOf: url)
+        }
     }
 
-    init(session: Alamofire.Session) {
+    init(session: Alamofire.Session, imageLoader: @escaping (URL) -> Data?) {
         // Injecté
         self.session = session
+        self.imageLoader = imageLoader
     }
 
     func getRecipe(ingredients: [String], callback: @escaping (Bool, [Recipe]?) ->Void) {
@@ -46,7 +51,7 @@ class RecipeService {
                     var recipes: [Recipe] = []
                     recipeResponse.hits.forEach { hit in
                         if let url = URL(string: hit.recipe.image)
-                            , let data = try? Data(contentsOf: url)
+                            , let data = self.imageLoader(url)
                         {
                             let recipe = Recipe(
                                 recipeName: hit.recipe.label,
