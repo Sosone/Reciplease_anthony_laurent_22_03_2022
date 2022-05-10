@@ -10,13 +10,13 @@ import XCTest
 
 class TestAlamofire: XCTestCase {
     
-    override func setUp() {
-        <#code#>
-    }
-    
-    override class func tearDown() {
-        <#code#>
-    }
+//    override func setUp() {
+//        <#code#>
+//    }
+//
+//    override class func tearDown() {
+//        <#code#>
+//    }
     
     
     func testGetRecipe() {
@@ -33,9 +33,7 @@ class TestAlamofire: XCTestCase {
         let expectation = XCTestExpectation(description: "Waiting")
         recipeService.getRecipe(ingredients: ["duck"]) { (success,Recipe) in
             let recipes: [Recipe] = []
-            XCTAssertNotNil(Recipe)
             XCTAssertTrue(success)
-            XCTAssertNotNil(recipes)
             XCTAssertNotNil(recipes.count)
             expectation.fulfill()
         }
