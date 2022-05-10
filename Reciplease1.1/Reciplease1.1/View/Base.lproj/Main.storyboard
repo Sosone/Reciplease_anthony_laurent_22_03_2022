@@ -434,6 +434,13 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OVE-UT-nh3">
                                 <rect key="frame" x="0.0" y="135.5" width="414" height="677.5"/>
                                 <color key="backgroundColor" red="0.33333334329999997" green="0.33333334329999997" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vous n'avez toujours pas de recette sauvergardée!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aiY-ZB-7FL">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <connections>
                                     <outlet property="dataSource" destination="jrS-sA-RGi" id="bgQ-9f-d57"/>
                                     <outlet property="delegate" destination="jrS-sA-RGi" id="0II-d6-v0S"/>
@@ -455,6 +462,7 @@
                     <navigationItem key="navigationItem" id="43z-1y-w2j"/>
                     <connections>
                         <outlet property="favoriteTableView" destination="OVE-UT-nh3" id="3VD-ws-Ifu"/>
+                        <outlet property="noFavorite" destination="aiY-ZB-7FL" id="gT4-qW-mAP"/>
                         <segue destination="b50-yd-mR0" kind="show" identifier="toDetails" id="BbB-dM-g4D"/>
                     </connections>
                 </viewController>
