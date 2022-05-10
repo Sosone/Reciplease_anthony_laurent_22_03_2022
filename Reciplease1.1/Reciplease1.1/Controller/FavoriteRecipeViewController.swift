@@ -28,6 +28,7 @@ class FavoriteRecipeViewController: UIViewController {
         favoriteTableView.dataSource = self
         favoriteTableView.delegate = self
         self.recipes = RecipeRepository.shared.retrieve()
+        favoriteTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +77,7 @@ extension FavoriteRecipeViewController: UITableViewDataSource, UITableViewDelega
             navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
 }
 
 
