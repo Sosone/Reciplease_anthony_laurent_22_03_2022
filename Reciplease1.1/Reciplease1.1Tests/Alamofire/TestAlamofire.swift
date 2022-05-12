@@ -61,6 +61,24 @@ class TestAlamofire: XCTestCase {
         
         wait(for: [expectation], timeout: 10)
     }
+    
+//    func testCannotGetRecipeWithError()
+//    {
+//        FakeProtocol.loadError = {
+//            return FakeResponseData.RecipeError.error
+//        }
+//
+//        let recipeService = RecipeService(session: session, imageLoader: { _ in return Data() })
+//
+//        let expectation = expectation(description: "wait")
+//        recipeService.getRecipe(ingredients: ["duck"]) { (success, recipes) in
+//            XCTAssertFalse(success)
+//            XCTAssertNil(recipes)
+//            expectation.fulfill()
+//        }
+//        
+//        wait(for: [expectation], timeout: 10)
+//    }
 }
     
     class FakeProtocol: URLProtocol {
