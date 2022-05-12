@@ -66,6 +66,7 @@ class RecipeService {
                     }
                     callback(true, recipes)
                 case .failure(let error):
+                print(error)
                     callback(false, nil)
             }
         }
