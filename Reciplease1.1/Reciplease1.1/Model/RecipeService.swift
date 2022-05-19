@@ -34,11 +34,8 @@ class RecipeService {
 
         let onOneLine = ingredients.joined(separator: ";")
         
-        let urlString = "https://api.edamam.com/api/recipes/v2?type=public&q=\(onOneLine)&app_id=b5153b3d&app_key=a20c31a57865e7456e53a5ee7770c94a"
-
-
-        guard let urlStringEncoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            , let recipeUrl = URL(string: urlStringEncoded)
+        guard let onOneLineEncoded = onOneLine.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            , let recipeUrl = URL(string: "https://api.edamam.com/api/recipes/v2?type=public&q=\(onOneLineEncoded)&app_id=b5153b3d&app_key=a20c31a57865e7456e53a5ee7770c94a")
         else
         {
             callback(false, nil)
