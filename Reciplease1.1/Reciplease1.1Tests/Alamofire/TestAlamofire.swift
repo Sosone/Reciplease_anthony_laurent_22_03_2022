@@ -62,6 +62,24 @@ class TestAlamofire: XCTestCase {
         wait(for: [expectation], timeout: 10)
     }
     
+    func testCannotCreateURLWhenIngredientHasInvalidCharacter()
+    {
+        FakeProtocol.loadData = {
+            return FakeResponseData.recipeCorrectData
+        }
+
+        let recipeService = RecipeService(session: session, imageLoader: { _ in return Data() })
+
+        let expectation = expectation(description: "wait")
+        let utf16String = String(bytes: [0xD8, 0x00] as [UInt8], encoding: .utf16BigEndian)!
+        recipeService.getRecipe(ingredients: [utf16String]) { (success, recipes) in
+            XCTAssertFalse(success)
+            XCTAssertNil(recipes)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10)
+    }
 }
     
     class FakeProtocol: URLProtocol {
