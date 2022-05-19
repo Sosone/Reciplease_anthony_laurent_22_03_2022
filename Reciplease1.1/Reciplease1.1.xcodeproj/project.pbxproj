@@ -715,7 +715,7 @@
 				DEVELOPMENT_TEAM = ZK85DCR84C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Reciplease1.1/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Reciplease2.0;
+				INFOPLIST_KEY_CFBundleDisplayName = Reciplease;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -745,7 +745,7 @@
 				DEVELOPMENT_TEAM = ZK85DCR84C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Reciplease1.1/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Reciplease2.0;
+				INFOPLIST_KEY_CFBundleDisplayName = Reciplease;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
