@@ -61,10 +61,13 @@ extension RecipeResultViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailRecipe") as? DetailRecipeViewController {
+        // 0. Récupération du view controller souhaité
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailRecipe") as? DetailRecipeViewController
+        {
+            // 1. Injection de la données
             let recipe = self.recipes?[indexPath.row]
             vc.recipe = recipe
+            // 2. Push (animation) de transition
             navigationController?.pushViewController(vc, animated: true)
         }
     }
