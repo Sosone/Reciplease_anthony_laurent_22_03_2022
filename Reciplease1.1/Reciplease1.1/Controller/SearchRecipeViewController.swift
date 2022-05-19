@@ -51,6 +51,7 @@ class SearchRecipeViewController: UIViewController,UITextFieldDelegate {
             callback: { success, resultRecipes in
                 self.recipes = resultRecipes
                 DispatchQueue.main.async {
+                    // 0. Executer la transition
                     self.performSegue(withIdentifier: "toRecipes", sender: nil)
                 }
             }
@@ -62,8 +63,11 @@ class SearchRecipeViewController: UIViewController,UITextFieldDelegate {
         return true
     }
 
+    // 1. Préparation de la transition
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // 2. Si c'est le controller souhiaté
         if let dataController = segue.destination as? RecipeResultViewController {
+            // 3. Alors j'injèctre les résultats
             dataController.recipes = self.recipes
         }
     }
