@@ -62,29 +62,13 @@ class TestAlamofire: XCTestCase {
         wait(for: [expectation], timeout: 10)
     }
     
-//    func testCannotGetRecipeWithError()
-//    {
-//        FakeProtocol.loadError = {
-//            return FakeResponseData.RecipeError.error
-//        }
-//
-//        let recipeService = RecipeService(session: session, imageLoader: { _ in return Data() })
-//
-//        let expectation = expectation(description: "wait")
-//        recipeService.getRecipe(ingredients: ["duck"]) { (success, recipes) in
-//            XCTAssertFalse(success)
-//            XCTAssertNil(recipes)
-//            expectation.fulfill()
-//        }
-//        
-//        wait(for: [expectation], timeout: 10)
-//    }
 }
     
     class FakeProtocol: URLProtocol {
         
         static var loadData: () -> Data? = { return nil }
         static var loadError: () -> Error? = { return nil }
+        static var loadResponse: () -> URLResponse? = { return nil }
         
         override class func canInit(with request: URLRequest) -> Bool {
             return true
@@ -95,17 +79,20 @@ class TestAlamofire: XCTestCase {
         }
         
         override func startLoading() {
+
             if let data = Self.loadData()
             {
                 client?.urlProtocol(self, didReceive: HTTPURLResponse(url: URL(string: "https://google.fr")!, statusCode: 200, httpVersion: nil, headerFields: nil)!, cacheStoragePolicy: .notAllowed)
                 client?.urlProtocol(self, didLoad: data)
                 client?.urlProtocolDidFinishLoading(self)
+
             }
             else if let error = Self.loadError()
             {
                 client?.urlProtocol(self, didFailWithError: error)
             }
         }
+        
         
         override func stopLoading() {
             
